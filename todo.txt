@@ -1,0 +1,16 @@
+x-get list of all windows/tabs and create initial tree
+-delete tab
+	-no children
+		-just remove
+	-has children
+		-either keep as ghost parent
+		-or move children up
+x-create new tab
+	x-as child 
+		-find openerTab
+		-create as child
+	x-as sibling
+		-find currentTab
+		-find parent of currentTab
+		-create as child of parent
+-update tab?

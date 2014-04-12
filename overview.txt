@@ -1,0 +1,7 @@
+Goal: Intuitive tab management by enforcing a tree like structure
+
+-new tabs opened from a page are nodes of that page
+-new tab created through the new tab command is a sibling of the previously visited tab
+-Commands available that can navigate levels up/down
+-clicking the icon shows a visual of the current tabs
+-the visual can be manipulated to affect the actual tab organization
