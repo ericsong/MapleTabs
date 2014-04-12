@@ -14,3 +14,4 @@ x-create new tab
 		-find parent of currentTab
 		-create as child of parent
 -update tab?
+-visualization of tabTree
