@@ -12,7 +12,7 @@ x-create new tab
 		-find currentTab
 		-find parent of currentTab
 		-create as child of parent
--update tab?
+x-update tab
 -visualization of tabTree
 	x-get d3 template running
 	-replace node circles with icon.png

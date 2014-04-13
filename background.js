@@ -84,3 +84,22 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
 		parentArray.push(orphans[i]);
 	}
 });
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+	if(tab.url.indexOf("chrome-devtools") != -1){
+		return;
+	}	
+	console.log(tabId + " has been updated");
+	var updateNode = findTabNode(tabTree, tabId);
+	console.log(updateNode);
+
+	for(var property in changeInfo){
+		if(changeInfo.hasOwnProperty(property)){
+			updateNode.tab[property] = changeInfo[property];
+			console.log(changeInfo[property]);
+			console.log(updateNode.tab[property]);
+		}
+	}	
+
+	updateNode.tab.title = tab.title;
+});
