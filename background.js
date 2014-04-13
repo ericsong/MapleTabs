@@ -196,3 +196,13 @@ chrome.commands.onCommand.addListener(function(command) {
 		treeShiftDown();
 	}
 });
+
+function createNotification(){
+	var notifDiv = $('<div>');
+	notifDiv.css('width': 100%);		
+	notifDiv.css('height': 100%);		
+	notifDiv.css('position': 'absolute');		
+	notifDiv.css('top': 0);		
+	notifDiv.css('left': 0);
+	
+}

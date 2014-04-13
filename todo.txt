@@ -26,7 +26,9 @@ x-create a new window when launching extension (start button)
 x-create swapin function 
 --find a way to save tab positions
 x-create swapout function
--add an "info" tab explaining the extension and telling the user to hide it
+x-add an "info" tab explaining the extension and telling the user to hide it
 -add a tab loaded confirm indicator
 x-add an icon
 -handle tab dragged in/out cases
+-close hidden window when active window is closed
+-recursive delete(?)

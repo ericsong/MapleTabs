@@ -35,5 +35,12 @@
       },
       "description": "Tab Tree shift up key"
     }
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*",
+                  "https://*/*"],
+      "js": ["jquery.js", "notify.js"]
+    }
+  ]
 }
