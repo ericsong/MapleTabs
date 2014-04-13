@@ -27,6 +27,7 @@ function createNotification(){
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse){
+		console.log("message received");
 		if(request.message == "tab child created")
 			createNotification();
 	}

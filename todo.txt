@@ -32,3 +32,5 @@ x-add a tab loaded confirm indicator
 x-add an icon
 -handle tab dragged in/out cases
 -close hidden window when active window is closed
+-add reinitalize/reset button
+-make popup graph scrollable
