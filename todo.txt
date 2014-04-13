@@ -17,8 +17,9 @@ x-update tab
 -visualization of tabTree
 	x-get d3 template running
 	-highlight currently opened tabs
-	-replace node circles with icon.png
-	-figure out a way to make the nodes less cluttered
+	x-replace node circles with icon.png
+	x-figure out a way to make the nodes less cluttered
+		x-limit node title to 10 characters
 	-add ways to modify the visual
 
 ~Activating levels~
@@ -27,8 +28,7 @@ x-create swapin function
 --find a way to save tab positions
 x-create swapout function
 x-add an "info" tab explaining the extension and telling the user to hide it
--add a tab loaded confirm indicator
+x-add a tab loaded confirm indicator
 x-add an icon
 -handle tab dragged in/out cases
 -close hidden window when active window is closed
--recursive delete(?)

@@ -96,9 +96,22 @@ function update(source){
 							return "translate(" + d.x + "," + d.y + ")"; 
 						});
 
+	/*
 	nodeEnter.append("circle")
 			.attr("r", 10)
 			.style("fill", "#fff");
+*/
+	
+	nodeEnter.append("svg:image")
+		.attr("class", "circle")
+		.attr("xlink:href", function(d){
+			return d.iconURL;	
+		})
+		.attr("x", "-8px")
+		.attr("y", "-8px")
+		.attr("width", "16px")
+		.attr("height", "16px");
+
 
 	nodeEnter.append("text")
 			.attr("y", 	function(d){
@@ -123,8 +136,11 @@ function update(source){
 
 function generateD3Data(node){
 	var data = {};
-	data.name = node.tab.title;
+	
+	//limit title to first x characters
+	data.name = node.tab.title.substring(0, 6);
 	data.parent = node.tab.parent;
+	data.iconURL = node.tab.favIconUrl;
 	data.children = [];
 
 	for(var i = 0; i < node.children.length; i++){
