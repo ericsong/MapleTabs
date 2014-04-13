@@ -60,12 +60,27 @@ chrome.tabs.onCreated.addListener(function(tab){
 		//creating child tab node
 		var currentTab = findTabNode(tabTree, tab.openerTabId);
 		var childTab = createTabNode(tab);
-		childTab.parent = parentTab;
+		childTab.parent = currentTab;
 		currentTab.children.push(childTab);
 	}
 });
 
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
-	var removedTab = findTabNode(tabTree, tabId);
-	//remove tab
+	console.log("attempting to remove node id " + tabId);
+	var removedNode = findTabNode(tabTree, tabId);
+	var orphans = removedNode.children;
+
+	//removes node from parent's children
+	var parentArray = removedNode.parent.children;
+	for(var i = 0; i < parentArray.length; i++){
+		if(parentArray[i].tab.id == tabId){
+			parentArray.splice(i, 1);
+			break;
+		}
+	}
+
+	//add orphans to new parent
+	for(var i = 0; i < orphans.length; i ++){
+		parentArray.push(orphans[i]);
+	}
 });

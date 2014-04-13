@@ -1,10 +1,9 @@
 x-get list of all windows/tabs and create initial tree
--delete tab
-	-no children
-		-just remove
-	-has children
-		-either keep as ghost parent
-		-or move children up
+x-delete tab
+	x-no children
+		x-just remove
+	x-has children
+		x-or move children up
 x-create new tab
 	x-as child 
 		-find openerTab
@@ -15,4 +14,7 @@ x-create new tab
 		-create as child of parent
 -update tab?
 -visualization of tabTree
-	-get d3 template running
+	x-get d3 template running
+	-replace node circles with icon.png
+	-figure out a way to make the nodes less cluttered
+	-add ways to modify the visual
