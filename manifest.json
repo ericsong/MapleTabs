@@ -16,5 +16,21 @@
   "permissions": [
     "tabs",
     "https://secure.flickr.com/"
-  ]
+  ],
+  "commands": {
+    "shift_down": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Tab Tree shift down key"
+    },
+    "shift_up": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
+      },
+      "description": "Tab Tree shift up key"
+    }
+  }
 }

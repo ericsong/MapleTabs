@@ -50,8 +50,10 @@ chrome.tabs.query({},function(tabs){
 
 //Move up/down levels
 function treeShiftUp(){
-	chrome.tabs.getCurrent(function(tab){
-		var currentNode = findTabNode(tab.id);
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+		var tab = tabs[0];
+		console.log(tab);
+		var currentNode = findTabNode(tabTree, tab.id);
 		var targetNode = currentNode.parent;
 
 		if(targetNode.parent == null){
@@ -74,10 +76,13 @@ function treeShiftUp(){
 }
 
 function treeShiftDown(){
-	chrome.tabs.getCurrent(function(tab){
-		var currentNode = findTabNode(tab.id);
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+		console.log(tabs);	
+		var tab = tabs[0];
+		console.log(tab.id);
+		
+		var currentNode = findTabNode(tabTree, tab.id);
 		var targetNodes = currentNode.children;
-
 		if(targetNodes.length == 0){
 			return
 		}else{
@@ -176,5 +181,13 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 		}	
 
 		updateNode.tab.title = tab.title;
+	}
+});
+
+chrome.commands.onCommand.addListener(function(command) {
+	if(command == "shift_up"){
+		treeShiftUp();
+	}else if(command == "shift_down"){
+		treeShiftDown();
 	}
 });
