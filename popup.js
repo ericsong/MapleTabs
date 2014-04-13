@@ -109,7 +109,15 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 		nodeEnter.append("svg:image")
 			.attr("class", "circle")
 			.attr("xlink:href", function(d){
-				return d.iconURL;	
+				var url = d.iconURL;
+				console.log(url);
+				if(url == null){
+					return "http://www.canada.ca/dist/assets/favicon.ico";
+				}else if(url.indexOf("http") == -1){
+					return "http://www.canada.ca/dist/assets/favicon.ico";
+				}else{
+					return d.iconURL;	
+				}
 			})
 			.attr("x", "-8px")
 			.attr("y", "-8px")

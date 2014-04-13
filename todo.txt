@@ -34,3 +34,5 @@ x-add an icon
 -close hidden window when active window is closed
 -add reinitalize/reset button
 -make popup graph scrollable
+x-add circle with icon is not there
+x-fixed mapletab notification bug
