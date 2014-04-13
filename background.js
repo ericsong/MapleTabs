@@ -36,16 +36,19 @@ function findTabNode(node, goalTabId){
 
 //initialize tree
 chrome.tabs.query({},function(tabs){
-	TABTREE_APP.activeWindowId = tabs[0].windowId;
+	chrome.tabs.query({active: true, currentWindow: true}, function(activeTabs){
+		var tab = activeTabs[0];
+		TABTREE_APP.activeWindowId = tab.windowId;
+		for(var i = 0; i < tabs.length; i++){
+			if(tabs[i].windowId == TABTREE_APP.activeWindowId){
+				var newTab = createTabNode(tabs[i]);
+				newTab.parent = tabTree;
+				tabTree.children.push(newTab);
+			}
+		}
 
-	for(var i = 0; i < tabs.length; i++){
-		var newTab = createTabNode(tabs[i]);
-		newTab.parent = tabTree;
-		tabTree.children.push(newTab);
-
-	}
-
-	console.log(tabTree);
+		console.log(tabTree);
+	});		
 });
 
 //Move up/down levels
@@ -123,21 +126,23 @@ chrome.tabs.onCreated.addListener(function(tab){
 		console.log("created hidden window tab");
 		TABTREE_APP.hiddenWindowId = tab.windowId;
 		return;	
-	}else if(tab.title == "New Tab"){
-		console.log(tab);
-		//creating sibling tab node
-		var currentTab = findTabNode(tabTree, tab.openerTabId);
-		var parentTab = currentTab.parent;
-		var childTab = createTabNode(tab);
-		childTab.parent = parentTab;
-		parentTab.children.push(childTab);
-	}else{
-		//creating child tab node
-		var currentTab = findTabNode(tabTree, tab.openerTabId);
-		var childTab = createTabNode(tab);
-		childTab.parent = currentTab;
-		currentTab.children.push(childTab);
-		tabSwapOut(tab.id);
+	}else if(TABTREE_APP.activeWindowId == tab.windowId){
+		if(tab.title == "New Tab"){
+			console.log(tab);
+			//creating sibling tab node
+			var currentTab = findTabNode(tabTree, tab.openerTabId);
+			var parentTab = currentTab.parent;
+			var childTab = createTabNode(tab);
+			childTab.parent = parentTab;
+			parentTab.children.push(childTab);
+		}else{
+			//creating child tab node
+			var currentTab = findTabNode(tabTree, tab.openerTabId);
+			var childTab = createTabNode(tab);
+			childTab.parent = currentTab;
+			currentTab.children.push(childTab);
+			tabSwapOut(tab.id);
+		}
 	}
 });
 
