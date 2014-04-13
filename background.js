@@ -1,7 +1,8 @@
 var text = "hi from background";
 
 var tabTree = {
-	'tab': {id: -1},
+	'tab': {title: "root", id: -1},
+	'parent': null,
 	'children': []
 }
 

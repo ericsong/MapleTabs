@@ -4,6 +4,7 @@ var tabTree = background.tabTree;
 chrome.tabs.update(1266, {url: 'https://google.com'});
 
 //treeData
+/*
 var treeData = [
   {
     "name": "Top Level",
@@ -19,7 +20,8 @@ var treeData = [
           },
           {
             "name": "Daughter of A",
-            "parent": "Level 2: A"
+            "parent": "Level 2: A",
+	    "children": []
           }
         ]
       },
@@ -29,13 +31,16 @@ var treeData = [
       },
       {
 	"name": "Level 2: C",
-	"parent": "Top Level"
+	"parent": "Top Level",
+	"children": []
       }
     ]
   }
 ];
+*/
 
-
+var treeData = [];
+treeData.push(generateD3Data(tabTree));
 
 
 var margin = {top: 40, right: 120, bottom: 20, left: 120};
@@ -103,4 +108,17 @@ function update(source){
 	link.enter().insert("path", "g")
 			.attr("class", "link")
 			.attr("d", diagonal);
+}
+
+function generateD3Data(node){
+	var data = {};
+	data.name = node.tab.title;
+	data.parent = node.tab.parent;
+	data.children = [];
+
+	for(var i = 0; i < node.children.length; i++){
+		data.children.push(generateD3Data(node.children[i]));	
+	}
+
+	return data;
 }
