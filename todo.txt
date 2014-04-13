@@ -23,7 +23,8 @@ x-update tab
 
 ~Activating levels~
 x-create a new window when launching extension (start button)
--create swapin function
+-create swapin function 
+--find a way to save tab positions
 -create swapout function
 -add an "info" tab explaining the extension and telling the user to hide it
 -throw unused tabs into the window

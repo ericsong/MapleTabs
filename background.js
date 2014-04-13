@@ -52,10 +52,13 @@ chrome.tabs.query({},function(tabs){
 function tabSwapIn(tabId){
 	//find tab
 	var tab = findTabNode(tabTree, tabId);
+	chrome.tabs.move(tabId, {windowId: TABTREE_APP.activeWindowId, index: -1});
 }
 
 function tabSwapOut(tabId){
-
+	//find tab
+	var tab = findTabNode(tabTree, tabId);
+	chrome.tabs.move(tabId, {windowId: TABTREE_APP.hiddenWindowId, index: -1});
 }
 
 //listeners
