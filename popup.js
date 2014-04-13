@@ -1,7 +1,18 @@
 var background = chrome.extension.getBackgroundPage();
 var tabTree = background.tabTree;
+var TABTREE_APP = background.TABTREE_APP;
 
-chrome.tabs.update(1266, {url: 'https://google.com'});
+var startButton = document.getElementById("startButton");
+
+function startApp(){
+	var openURL = "chrome-extension://" + chrome.runtime.id + "/homepage.html";
+	chrome.windows.create({url: openURL, focused: false}, 
+		function(window){
+			console.log(window);		
+		});
+}
+
+startButton.onclick = startApp;
 
 //treeData
 /*

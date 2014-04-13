@@ -12,12 +12,18 @@ x-create new tab
 		-find currentTab
 		-find parent of currentTab
 		-create as child of parent
+
 x-update tab
 -visualization of tabTree
 	x-get d3 template running
+	-highlight currently opened tabs
 	-replace node circles with icon.png
 	-figure out a way to make the nodes less cluttered
 	-add ways to modify the visual
 
-~Activating levels...~
--child tabs should be cached (hidden?) and deleted from the current window
+~Activating levels~
+x-create a new window when launching extension (start button)
+-create swapin function
+-create swapout function
+-add an "info" tab explaining the extension and telling the user to hide it
+-throw unused tabs into the window
