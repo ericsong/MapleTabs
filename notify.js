@@ -6,7 +6,7 @@ function createNotification(){
 	var notifDiv = $('<div>');
 	notifDiv.css('width', '100%');		
 	notifDiv.css('height', '100px');		
-	notifDiv.css('position', 'absolute');
+	notifDiv.css('position', 'fixed');
 	notifDiv.css('z-index', 9999);
 	notifDiv.css('top', 0 - parentOffset.top);		
 	notifDiv.css('left', 0 - parentOffset.left);
@@ -25,4 +25,9 @@ function createNotification(){
 	}, 1000);
 }
 
-createNotification();
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse){
+		if(request.message == "tab child created")
+			createNotification();
+	}
+);

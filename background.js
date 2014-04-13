@@ -142,6 +142,11 @@ chrome.tabs.onCreated.addListener(function(tab){
 			childTab.parent = currentTab;
 			currentTab.children.push(childTab);
 			tabSwapOut(tab.id);
+		
+			chrome.tabs.query({active: true, currentWindow: true}, 
+						function(tabs){
+							chrome.tabs.sendMessage(tabs[0].id, {message: "tab child created"});	
+						});
 		}
 	}
 });
@@ -196,13 +201,3 @@ chrome.commands.onCommand.addListener(function(command) {
 		treeShiftDown();
 	}
 });
-
-function createNotification(){
-	var notifDiv = $('<div>');
-	notifDiv.css('width': 100%);		
-	notifDiv.css('height': 100%);		
-	notifDiv.css('position': 'absolute');		
-	notifDiv.css('top': 0);		
-	notifDiv.css('left': 0);
-	
-}
