@@ -18,3 +18,6 @@ x-update tab
 	-replace node circles with icon.png
 	-figure out a way to make the nodes less cluttered
 	-add ways to modify the visual
+
+~Activating levels...~
+-child tabs should be cached (hidden?) and deleted from the current window

@@ -81,6 +81,7 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo){
 
 	//add orphans to new parent
 	for(var i = 0; i < orphans.length; i ++){
+		orphans[i].parent = removedNode.parent;
 		parentArray.push(orphans[i]);
 	}
 });
