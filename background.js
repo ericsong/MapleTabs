@@ -48,6 +48,55 @@ chrome.tabs.query({},function(tabs){
 	console.log(tabTree);
 });
 
+//Move up/down levels
+function treeShiftUp(){
+	chrome.tabs.getCurrent(function(tab){
+		var currentNode = findTabNode(tab.id);
+		var targetNode = currentNode.parent;
+
+		if(targetNode.parent == null){
+			return
+		}else{
+			chrome.tabs.getAllInWindow(TABTREE_APP.activeWindowId, function(oldTabs){
+				var newOpenNodes = targetNode.parent.children;
+				//add tabs
+				for(var i = 0; i < newOpenNodes.length; i++){
+					tabSwapIn(newOpenNodes[i].tab.id);
+				}	
+
+				//remove tabs
+				for(var i = 0; i < oldTabs.length; i++){
+					tabSwapOut(oldTabs[i].id);
+				}
+			});
+		}
+	});
+}
+
+function treeShiftDown(){
+	chrome.tabs.getCurrent(function(tab){
+		var currentNode = findTabNode(tab.id);
+		var targetNodes = currentNode.children;
+
+		if(targetNodes.length == 0){
+			return
+		}else{
+			chrome.tabs.getAllInWindow(TABTREE_APP.activeWindowId, function(oldTabs){
+				var newOpenNodes = targetNodes;
+				//add tabs
+				for(var i = 0; i < newOpenNodes.length; i++){
+					tabSwapIn(newOpenNodes[i].tab.id);
+				}	
+
+				//remove tabs
+				for(var i = 0; i < oldTabs.length; i++){
+					tabSwapOut(oldTabs[i].id);
+				}
+			});
+		}
+	});
+}
+
 //tab swap functions
 function tabSwapIn(tabId){
 	//find tab
@@ -83,6 +132,7 @@ chrome.tabs.onCreated.addListener(function(tab){
 		var childTab = createTabNode(tab);
 		childTab.parent = currentTab;
 		currentTab.children.push(childTab);
+		tabSwapOut(tab.id);
 	}
 });
 
