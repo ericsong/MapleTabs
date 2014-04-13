@@ -28,4 +28,5 @@ x-create swapin function
 x-create swapout function
 -add an "info" tab explaining the extension and telling the user to hide it
 -add a tab loaded confirm indicator
--add an icon
+x-add an icon
+-handle tab dragged in/out cases
