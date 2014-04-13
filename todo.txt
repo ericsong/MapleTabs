@@ -33,6 +33,6 @@ x-add an icon
 -handle tab dragged in/out cases
 -close hidden window when active window is closed
 -add reinitalize/reset button
--make popup graph scrollable
+x-make popup graph scrollable (just made it really big)
 x-add circle with icon is not there
 x-fixed mapletab notification bug

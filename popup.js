@@ -72,9 +72,9 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 						return [d.x, d.y];
 					});
 
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select("#container").append("svg")
 			.attr("width", width + margin.right + margin.left)
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("height", '1000px')
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
