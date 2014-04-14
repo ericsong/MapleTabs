@@ -1,5 +1,7 @@
 MapleTabs
 ==========
+hackRU Spring 2014 Project
+Awarded "Best Solo Hack"
 
 MapleTabs is a tab manager for chrome that uses navigation history to organize tabs.
 Tabs are organized into a tree like data structure where tabs can be added in either two ways...
