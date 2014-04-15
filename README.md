@@ -19,7 +19,7 @@ The window will always show the current tab and all siblings to the current tab.
 
 "Command+Shift+M" - Shift down a level
 
-**Currently only tested for Macs but should work for linux/Windows if "Control" is substituted for "Command".
+**Currently only tested for Macs
 
 The app was motivated by two ideas. 
 
