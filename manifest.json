@@ -6,16 +6,16 @@
   "version": "1.0",
 
   "background": {
-    "page": "background.html"
+    "page": "background/background.html"
   },
  
  "icons": {
-	"512": "mapleleaf_icon.png"
+	"512": "img/mapleleaf_icon.png"
   },
 
   "browser_action": {
-    "default_icon": "mapleleaf_icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "img/mapleleaf_icon.png",
+    "default_popup": "popup/popup.html"
   },
   "permissions": [
     "tabs"
@@ -40,10 +40,10 @@
     {
       "matches": ["http://*/*",
                   "https://*/*"],
-      "js": ["jquery.js", "notify.js"]
+      "js": ["content_scripts/lib/jquery.js", "content_scripts/notify.js"]
     }
   ],
   "web_accessible_resources": [
-    "jquery-1.10.2.min.map" 
+    "source_maps/jquery-1.10.2.min.map" 
   ]
 }
