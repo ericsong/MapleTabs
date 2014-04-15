@@ -21,6 +21,7 @@ x-update tab
 	x-figure out a way to make the nodes less cluttered
 		x-limit node title to 10 characters
 	-add ways to modify the visual
+	-click node to navigate to it
 
 ~Activating levels~
 x-create a new window when launching extension (start button)
@@ -36,3 +37,5 @@ x-add an icon
 x-make popup graph scrollable (just made it really big)
 x-add circle with icon is not there
 x-fixed mapletab notification bug
+-make parent tab active when shifting up
+-when deleting a tab from a window with only 1 tab. determine behavior where you don't just close the browser
