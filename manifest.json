@@ -3,7 +3,7 @@
 
   "name": "MapleTabs",
   "description": "Intuitive browser navigation",
-  "version": "1.0",
+  "version": "0.1",
 
   "background": {
     "page": "background/background.html"
