@@ -23,7 +23,8 @@
   "commands": {
     "shift_down": {
       "suggested_key": {
-        "default": "Ctrl+Shift+M",
+        "default": "Ctrl+Shift+Down",
+	"linux": "Ctrl+Shift+Down",
         "mac": "Command+Shift+M"
       },
       "description": "Tab Tree shift down key"
