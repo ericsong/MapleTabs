@@ -31,11 +31,11 @@ New tabs that are opened from a page (through a link) will not show up in the cu
 
 ![](http://i.imgur.com/xE11yuW.png)
 
-![](http://i.imgur.com/GI6AfJm.png)
+![](http://i.imgur.com/7dM4ySA.png)
 
 Opening a new tab through _(Control+T)_ will store the new tab as a sibling node of the current page.   
 
-![](http://i.imgur.com/Cgcq1Nr.png)
+![](http://i.imgur.com/9rLDf66.png)
 
 
 ###Opening tabs and navigating through the tree
@@ -50,11 +50,11 @@ In order to open a new set of tabs, you can either shift up or down a level in t
 
 Shifting up will open the current tab's parent tab and all of its siblings.  
 _Hotkey: "Ctrl+Shift+Up"_
-![](http://i.imgur.com/pgpmW72.png)
+![](http://i.imgur.com/UmM4R7O.png)
 
 Shifting down will open all of the current tab's children.  
 _Hotkey: "Ctrl+Shift+Down"_
-![](http://i.imgur.com/Mz4MfsU.jpg)
+![](http://i.imgur.com/3yzZoa7.jpg)
 
 __The hotkeys for shifting up and down must be set from the chrome extensions page. Refer to Step 3 in "How to Use" for instructions__
 
