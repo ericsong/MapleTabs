@@ -6,7 +6,7 @@ var currentTabId;
 var startButton = document.getElementById("startButton");
 
 function startApp(){
-	var openURL = "chrome-extension://" + chrome.runtime.id + "/homepage.html";
+	var openURL = "chrome-extension://" + chrome.runtime.id + "/homepage/homepage.html";
 	chrome.windows.create({url: openURL, focused: false}, 
 		function(window){
 			console.log(window);		
