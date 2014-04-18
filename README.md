@@ -4,8 +4,8 @@ hackRU Spring 2014 Project (Awarded "Best Solo Hack")
 
 MapleTabs is a tab manager for chrome that uses navigation history to organize tabs.
 Tabs are organized into a tree like data structure which can viewed when clicking on the extension icon.  
-As shown...  
-(put picture of a tree here)
+As shown...
+![](http://i.imgur.com/j0Lmvsv.png)
 
 MapleTabs is still in its first rendition so expect it to be fairly buggy. I've compiled a list to go through but if you find any, please let me know at eric.song@rutgers.edu! Any thoughts or feature requests are also appreciated.
 
@@ -26,28 +26,35 @@ MapleTabs is still in its first rendition so expect it to be fairly buggy. I've 
 ## How it works
 ###Adding new tabs
 New tabs that are opened from a page (through a link) will not show up in the current window. Instead, they are stored as children of the current page.  
-(pic of page), (pic of adding a link), (show updated tree)
+
+![](http://i.imgur.com/Epuqlik.png)
+
+![](http://i.imgur.com/xE11yuW.png)
+
+![](http://i.imgur.com/GI6AfJm.png)
 
 Opening a new tab through _(Control+T)_ will store the new tab as a sibling node of the current page.   
-(picture of new tab)
+
+![](http://i.imgur.com/Cgcq1Nr.png)
+
 
 ###Opening tabs and navigating through the tree
 The window will always show the current tab and all of its siblings.
 
 __The current tab is highlighted red.__
 
-For example, here, the active tab in the tree is the "reddit.com" tab. This node has 3 siblings so the window would contain the 4 tabs.
-(picture of tree)
+For example, here, the active tab in the tree is the "reuters" tab. This node has 3 siblings so the window would contain the 4 tabs.
+![](http://i.imgur.com/nVYIwb0.jpg)
 
 In order to open a new set of tabs, you can either shift up or down a level in the tree.
 
 Shifting up will open the current tab's parent tab and all of its siblings.  
 _Hotkey: "Ctrl+Shift+Up"_
-(picture of tree shifted up)
+![](http://i.imgur.com/pgpmW72.png)
 
 Shifting down will open all of the current tab's children.  
 _Hotkey: "Ctrl+Shift+Down"_
-(picture of tree shifted down)
+![](http://i.imgur.com/Mz4MfsU.jpg)
 
 __The hotkeys for shifting up and down must be set from the chrome extensions page. Refer to Step 3 in "How to Use" for instructions__
 
