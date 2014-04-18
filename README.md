@@ -3,26 +3,30 @@ MapleTabs
 hackRU Spring 2014 Project (Awarded "Best Solo Hack")
 
 MapleTabs is a tab manager for chrome that uses navigation history to organize tabs.
-Tabs are organized into a tree like data structure which can viewed when clicking on the extension icon.
-As shown...
+Tabs are organized into a tree like data structure which can viewed when clicking on the extension icon.  
+As shown...  
 (put picture of a tree here)
 
+## How to install
+1. Download/clone the repository
+2. Go to chrome's extension page, "chrome://extensions"
+3. Click "Load unpacked extension..."
+4. Navigate to the repository folder and click "Open"
+5. MapleTabs should now be installed
 
 ## How to use
-1. Install the extension 
-	1. substeps
-2. Click the extension icon
-3. Scroll to the bottom of chrome's extension page and open "Keyboard shortcuts"
-4. Set hotkeys for "Tab Tree shift down" and "tab Tree shift up" under MapleTabs, I recommend "Ctrl+Shift+Down" for shift down and "Ctrl+Shift+Up" for shift up
+1. Click the extension icon
+2. Scroll to the bottom of chrome's extension page and open "Keyboard shortcuts"
+3. Set hotkeys for "Tab Tree shift down" and "tab Tree shift up" under MapleTabs, I recommend "Ctrl+Shift+Down" for shift down and "Ctrl+Shift+Up" for shift up
 4. Click "Start" within the popup window. A new window will pop up with instructions.
 5. Browse the web!
 
 ## How it works
 ###Adding new tabs
-New tabs that are opened from a page (through a link) will not show up in the current window. Instead, they are stored as children of the current page.
+New tabs that are opened from a page (through a link) will not show up in the current window. Instead, they are stored as children of the current page.  
 (pic of page), (pic of adding a link), (show updated tree)
 
-Opening a new tab through (Control+T) will store the new tab as a sibling node of the current page. 
+Opening a new tab through _(Control+T)_ will store the new tab as a sibling node of the current page.   
 (picture of new tab)
 
 ###Opening tabs and navigating through the tree
@@ -35,13 +39,11 @@ For example, here, the active tab in the tree is the "reddit.com" tab. This node
 
 In order to open a new set of tabs, you can either shift up or down a level in the tree.
 
-Shifting up will open the current tab's parent tab and all of its siblings.
-
+Shifting up will open the current tab's parent tab and all of its siblings.  
 _Hotkey: "Ctrl+Shift+Up"_
 (picture of tree shifted up)
 
-Shifting down will open all of the current tab's children.
-
+Shifting down will open all of the current tab's children.  
 _Hotkey: "Ctrl+Shift+Down"_
 (picture of tree shifted down)
 
