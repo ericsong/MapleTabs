@@ -78,6 +78,15 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 	}
 });
 
+chrome.tabs.onMoved.addListener(function(tabId, moveInfo){
+	if(findTabNode(tabTree, tabId) != null){
+		console.log(tabId + " has been moved");
+		var movedNode = findTabNode(tabTree, tabId);
+	
+		movedNode.tab.index = moveInfo.toIndex;	
+		movedNode.savedIndex = moveInfo.toIndex;
+	}
+});
 
 //hotkeys listener
 chrome.commands.onCommand.addListener(function(command) {

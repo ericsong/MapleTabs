@@ -47,6 +47,7 @@ x-find a way to save tab positions (so when you renter a level its organized in 
 x-make parent tab active when shifting up
 -handle tab dragged in/out cases
 -check for all other browser change events
+	-tab moved
 -close hidden window when active window is closed (cleanup routine)
 -add reinitalize button
 -when deleting a tab from a window with only 1 tab. determine behavior where you don't just close the browser
