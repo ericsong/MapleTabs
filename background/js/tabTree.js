@@ -25,7 +25,7 @@ function findTabNode(node, goalTabId){
 			return currentNode;
 		}else{
 			for(var i = 0; i < currentNode.children.length; i++){
-				stack.push(currentNode.children[i]);			
+				stack.push(currentNode.children[i]);
 			}
 		}
 	}
@@ -37,7 +37,6 @@ function findTabNode(node, goalTabId){
 function treeShiftUp(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 		var tab = tabs[0];
-		console.log(tab);
 		var currentNode = findTabNode(tabTree, tab.id);
 		var targetNode = currentNode.parent;
 
@@ -62,9 +61,7 @@ function treeShiftUp(){
 
 function treeShiftDown(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		console.log(tabs);	
 		var tab = tabs[0];
-		console.log(tab.id);
 		
 		var currentNode = findTabNode(tabTree, tab.id);
 		var targetNodes = currentNode.children;
