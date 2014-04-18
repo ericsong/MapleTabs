@@ -4,13 +4,16 @@ hackRU Spring 2014 Project
 
 
 MapleTabs is a tab manager for chrome that uses navigation history to organize tabs.
-Tabs are organized into a tree like data structure where tabs can be added in either two ways...
+Tabs are organized into a tree like data structure which can viewed when clicking on the extension icon.
+As shown...
+(put picture of a tree here)
 
-"Control+T" which will add a new tab as a sibling to the current tab 
 
-or
 
-"Control+Click" which will add a new tab as a child to the current tab.
+~How to use~
+1. Install the extension 
+	1. substeps
+2.  
 
 The window will always show the current tab and all siblings to the current tab. If you open several new links from a page (as child tabs) and want to view them. You shift down a level in the tree. Likewise, if you want to go back to the parent tab, you shift up a level. The commands are as follows... 
 
