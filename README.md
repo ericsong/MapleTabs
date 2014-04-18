@@ -9,24 +9,48 @@ As shown...
 (put picture of a tree here)
 
 
-
-~How to use~
+## How to use
 1. Install the extension 
 	1. substeps
-2.  
+2. Click the extension icon
+3. Scroll to the bottom of chrome's extension page and open "Keyboard shortcuts"
+4. Set hotkeys for "Tab Tree shift down" and "tab Tree shift up" under MapleTabs, I recommend "Ctrl+Shift+Down" for shift down and "Ctrl+Shift+Up" for shift up
+4. Click "Start" within the popup window. A new window will pop up with instructions.
+5. Browse the web!
 
-The window will always show the current tab and all siblings to the current tab. If you open several new links from a page (as child tabs) and want to view them. You shift down a level in the tree. Likewise, if you want to go back to the parent tab, you shift up a level. The commands are as follows... 
+## How it works
+###Adding new tabs
+New tabs that are opened from a page (through a link) will not show up in the current window. Instead, they are stored as children of the current page.
+(pic of page), (pic of adding a link), (show updated tree)
 
-"Command+Shift+K" - Shift up a level
+Opening a new tab through (Control+T) will store the new tab as a sibling node of the current page. 
+(picture of new tab)
 
-"Command+Shift+M" - Shift down a level
+###Opening tabs and navigating through the tree
+The window will always show the current tab and all of its siblings.
 
-**Currently only tested for Macs
+__The current tab is highlighted red.__
 
+For example, here, the active tab in the tree is the "reddit.com" tab. This node has 3 siblings so the window would contain the 4 tabs.
+(picture of tree)
+
+In order to open a new set of tabs, you can either shift up or down a level in the tree.
+
+Shifting up will open the current tab's parent tab and all of its siblings.
+
+_Hotkey: "Ctrl+Shift+Up"_
+(picture of tree shifted up)
+
+Shifting down will open all of the current tab's children.
+
+_Hotkey: "Ctrl+Shift+Down"_
+(picture of tree shifted down)
+
+__The hotkeys for shifting up and down must be set from the chrome extensions page. Refer to Step 3 in "How to Use" for instructions__
+
+##Motivation
 The app was motivated by two ideas. 
 
-First, I noticed that many of the tabs I open can easily be linked to the page I opened them from. For example, when I browse Reddit, I like to open all the links I'm interested in and browse through them. 
+First, I noticed that many of the tabs I open can easily be linked to the page I opened them from. For example, when I browse Reddit, I like to open all the links I'm interested in and browse through them. This is ok if the only site I'm browsing is Reddit. However, if I have several other sites open (which is often the case), the browser can get very cluttered and messy. 
 
 Second, I often wonder how I navigated to certain links and get lost in the browser's history when trying to navigate my way backwards. This app provides a potentially more intuitive way to backtrace your navigation history. 
-
-Pictures will be added to help explain. Words are hard x _ x
