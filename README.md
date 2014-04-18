@@ -7,6 +7,8 @@ Tabs are organized into a tree like data structure which can viewed when clickin
 As shown...  
 (put picture of a tree here)
 
+MapleTabs is still in its first rendition so expect it to be fairly buggy. I've compiled a list to go through but if you find any, please let me know at eric.song@rutgers.edu! Any thoughts or feature requests are also appreciated.
+
 ## How to install
 1. Download/clone the repository
 2. Go to chrome's extension page, "chrome://extensions"
