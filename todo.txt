@@ -43,11 +43,17 @@ x-fixed mapletab notification bug
 -Be able to graphically modify tree
 	-Manipulate browser to match the graphic tree
 -Click node to open it (and siblings)
--find a way to save tab positions (so when you renter a level its organized in the same way)
--make parent tab active when shifting up
+x-find a way to save tab positions (so when you renter a level its organized in the same way)
+x-make parent tab active when shifting up
 -handle tab dragged in/out cases
 -check for all other browser change events
 -close hidden window when active window is closed (cleanup routine)
 -add reinitalize button
 -when deleting a tab from a window with only 1 tab. determine behavior where you don't just close the browser
 -have the tree span for ALL chrome windows/tabs
+x-add marks to readme photos
+	x-tree new child
+	x-tree new tab
+	x-shift up
+	x-shift down
+-compress readme images

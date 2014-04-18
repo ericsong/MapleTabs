@@ -1,6 +1,7 @@
 //tab tree definition and traversal functions
 var tabTree = {
 	'tab': {title: "root", id: -1},
+	'savedIndex': -1,
 	'parent': null,
 	'children': []
 }
@@ -9,7 +10,8 @@ function createTabNode(tab){
 	var node = {
 		'tab': tab,
 		'parent': null,
-		'children': []
+		'children': [],
+		'savedIndex': -1,
 	}	
 
 	return node;
@@ -36,59 +38,67 @@ function findTabNode(node, goalTabId){
 //Move up/down levels
 function treeShiftUp(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		var tab = tabs[0];
-		var currentNode = findTabNode(tabTree, tab.id);
-		var targetNode = currentNode.parent;
+		console.log("Shift up function called");
+		var targetNodeId = findTabNode(tabTree, tabs[0].id).parent.tab.id;
 
-		if(targetNode.parent == null){
-			return
-		}else{
-			chrome.tabs.getAllInWindow(TABTREE_APP.activeWindowId, function(oldTabs){
-				var newOpenNodes = targetNode.parent.children;
-				//add tabs
-				for(var i = 0; i < newOpenNodes.length; i++){
-					tabSwapIn(newOpenNodes[i].tab.id);
-				}	
-
-				//remove tabs
-				for(var i = 0; i < oldTabs.length; i++){
-					tabSwapOut(oldTabs[i].id);
-				}
-			});
-		}
+		treeShiftLevel(targetNodeId);	
 	});
 }
 
 function treeShiftDown(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-		var tab = tabs[0];
+		console.log("Shift down function called");
+		var targetNodeId = findTabNode(tabTree, tabs[0].id).children[0].tab.id;
 		
-		var currentNode = findTabNode(tabTree, tab.id);
-		var targetNodes = currentNode.children;
-		if(targetNodes.length == 0){
-			return
-		}else{
-			chrome.tabs.getAllInWindow(TABTREE_APP.activeWindowId, function(oldTabs){
-				var newOpenNodes = targetNodes;
-				//add tabs
-				for(var i = 0; i < newOpenNodes.length; i++){
-					tabSwapIn(newOpenNodes[i].tab.id);
-				}	
+		treeShiftLevel(targetNodeId);	
+	});
+}
 
-				//remove tabs
-				for(var i = 0; i < oldTabs.length; i++){
-					tabSwapOut(oldTabs[i].id);
-				}
-			});
+function treeShiftLevel(tabId){
+	chrome.tabs.query({currentWindow: true}, function(tabs){
+		//find targetNode
+		var targetNode = findTabNode(tabTree, tabId);
+
+		if(targetNode.tab.title == "root"){
+			//check if user is trying to shift further up than root
+			//print some kind of error message***
+			return;
+		}else{
+			//find tabs to switch in (siblings on tabNode)
+			//find targetNode's parent
+			var targetNodeParent = targetNode.parent;
+			var switchInTabNodes = targetNodeParent.children;
+
+			//find tabs to switch out (current active tabs)
+			var switchOutTabs = tabs;
+
+			//record tabOut indexes 
+			for(var i = 0; i < switchOutTabs.length; i++){
+				var tempNode = findTabNode(tabTree, switchOutTabs[i].id);
+				tempNode.savedIndex = tempNode.tab.index;
+			}
+
+			//move in tabs
+			for(var i = 0; i < switchInTabNodes.length; i ++){
+				tabSwapIn(switchInTabNodes[i].tab.id, switchInTabNodes[i].savedIndex);
+			}
+
+			//move out tabs
+			for(var i = 0; i < switchOutTabs.length; i++){
+				tabSwapOut(switchOutTabs[i].id);
+			}
+
+			//activate proper window (for shift up)
+			chrome.tabs.update(targetNode.tab.id, {active: true});
 		}
 	});
 }
 
 //moving tabs in and out of active window
-function tabSwapIn(tabId){
+function tabSwapIn(tabId, savedIndex){
 	//find tab
 	var tab = findTabNode(tabTree, tabId);
-	chrome.tabs.move(tabId, {windowId: TABTREE_APP.activeWindowId, index: -1});
+	chrome.tabs.move(tabId, {windowId: TABTREE_APP.activeWindowId, index: savedIndex});
 }
 
 function tabSwapOut(tabId){
@@ -97,4 +107,8 @@ function tabSwapOut(tabId){
 	chrome.tabs.move(tabId, {windowId: TABTREE_APP.hiddenWindowId, index: -1});
 }
 
+function tabReorder(tabId, newIndex){
+	//find tab
+	chrome.tabs.move(tabId, {index: newIndex});
+}
 

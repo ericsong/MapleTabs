@@ -82,8 +82,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 //hotkeys listener
 chrome.commands.onCommand.addListener(function(command) {
 	if(command == "shift_up"){
+		console.log("shifting up");
 		treeShiftUp();
 	}else if(command == "shift_down"){
+		console.log("shifting down");
 		treeShiftDown();
 	}
 });
