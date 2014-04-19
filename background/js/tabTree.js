@@ -79,8 +79,26 @@ function treeShiftLevel(tabId){
 			}
 
 			//move in tabs
-			for(var i = 0; i < switchInTabNodes.length; i ++){
-				tabSwapIn(switchInTabNodes[i].tab.id, switchInTabNodes[i].savedIndex);
+			//save moveOrder
+			var moveOrder = [];
+			for(var i = 0; i < switchInTabNodes.length; i++){
+				moveOrder.push({id: switchInTabNodes[i].tab.id, index: switchInTabNodes[i].savedIndex});	
+			}
+
+			//sort moveOrder by index
+			moveOrder.sort(function(a, b){
+				if(a.index < b.index)
+					return -1;
+				else if(a.index > b.index)
+					return 1;	
+				else
+					return 0;
+			});
+
+			//get savedIndex order
+			//add with -1 index but in the correct order
+			for(var i = 0; i < moveOrder.length; i++){
+				tabSwapIn(moveOrder[i].id, -1);
 			}
 
 			//move out tabs

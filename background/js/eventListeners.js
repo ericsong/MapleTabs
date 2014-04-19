@@ -79,13 +79,13 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 });
 
 chrome.tabs.onMoved.addListener(function(tabId, moveInfo){
-	if(findTabNode(tabTree, tabId) != null){
-		console.log(tabId + " has been moved");
-		var movedNode = findTabNode(tabTree, tabId);
-	
-		movedNode.tab.index = moveInfo.toIndex;	
-		movedNode.savedIndex = moveInfo.toIndex;
-	}
+	chrome.tabs.query({currentWindow: true}, function(tabs){
+		for(var i = 0;i < tabs.length; i++){
+			var updateNode = findTabNode(tabTree, tabs[i].id);
+			updateNode.tab.index = tabs[i].index;
+			updateNode.savedIndex = tabs[i].index;
+		}
+	});
 });
 
 //hotkeys listener
