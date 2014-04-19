@@ -2,6 +2,7 @@
 var tabTree = {
 	'tab': {title: "root", id: -1},
 	'savedIndex': -1,
+	'active': false,
 	'parent': null,
 	'children': []
 }
@@ -48,7 +49,13 @@ function treeShiftUp(){
 function treeShiftDown(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 		console.log("Shift down function called");
-		var targetNodeId = findTabNode(tabTree, tabs[0].id).children[0].tab.id;
+		
+		var children = findTabNode(tabTree, tabs[0].id).children;	
+		var targetNodeId = children[0].tab.id;
+		for(var i = 0; i  < children.length; i++){
+			if(children[i].active)
+				targetNodeId = children[i].tab.id;	
+		}
 		
 		treeShiftLevel(targetNodeId);	
 	});
@@ -103,6 +110,13 @@ function treeShiftLevel(tabId){
 
 			//move out tabs
 			for(var i = 0; i < switchOutTabs.length; i++){
+				var node = findTabNode(tabTree, switchOutTabs[i].id);
+				if(switchOutTabs[i].active == true){
+					node.active = true;
+				}else{
+					node.active = false;
+				}
+
 				tabSwapOut(switchOutTabs[i].id);
 			}
 
