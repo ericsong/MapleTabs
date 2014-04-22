@@ -25,7 +25,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
     // define a d3 diagonal projection for use by the node paths later on.
     var diagonal = d3.svg.diagonal()
         .projection(function(d) {
-            return [d.y, d.x];
+            return [d.x, d.y];
         });
 
     // A recursive helper function for performing some setup by walking through all nodes
@@ -72,11 +72,11 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
             clearTimeout(panTimer);
             translateCoords = d3.transform(svgGroup.attr("transform"));
             if (direction == 'left' || direction == 'right') {
-                translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
-                translateY = translateCoords.translate[1];
+                translateX = direction == 'left' ? translateCoords.translate[1] + speed : translateCoords.translate[1] - speed;
+                translateY = translateCoords.translate[0];
             } else if (direction == 'up' || direction == 'down') {
-                translateX = translateCoords.translate[0];
-                translateY = direction == 'up' ? translateCoords.translate[1] + speed : translateCoords.translate[1] - speed;
+                translateX = translateCoords.translate[1];
+                translateY = direction == 'up' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
             }
             scaleX = translateCoords.scale[0];
             scaleY = translateCoords.scale[1];
@@ -440,7 +440,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
         var nodeUpdate = node.transition()
             .duration(duration)
             .attr("transform", function(d) {
-                return "translate(" + d.y + "," + d.x + ")";
+                return "translate(" + d.x + "," + d.y + ")";
             });
 
         // Fade the text in
