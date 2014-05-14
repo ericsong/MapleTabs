@@ -15,42 +15,6 @@ function startApp(){
 
 startButton.onclick = startApp;
 
-//treeData
-/*
-var treeData = [
-  {
-    "name": "Top Level",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A",
-	    "children": []
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      },
-      {
-	"name": "Level 2: C",
-	"parent": "Top Level",
-	"children": []
-      }
-    ]
-  }
-];
-*/
-
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 	currentTabId = tabs[0].id;	
 
@@ -124,6 +88,18 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 			.attr("width", "16px")
 			.attr("height", "16px");
 
+		nodeEnter.on("click", function(d){
+			//send browser change request to background
+			chrome.runtime.sendMessage({	
+				command: "shiftLevel",
+			   	targetId: d.id}, 
+				function(response) {
+					//handle success/failure
+					if(response.status != "success")
+						console.log("node click failed");
+				}
+			);
+		});
 
 		nodeEnter.append("text")
 				.attr("y", 	function(d){
@@ -170,3 +146,4 @@ function generateD3Data(node){
 
 	return data;
 }
+

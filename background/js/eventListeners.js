@@ -98,3 +98,14 @@ chrome.commands.onCommand.addListener(function(command) {
 		treeShiftDown();
 	}
 });
+
+//message listener (from popup manipulation)
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		if(request.command == "shiftLevel"){
+			var targetId = request.targetId;
+			treeShiftLevel(targetId);	
+			sendResponse({status: "success"});
+		}
+	}
+);

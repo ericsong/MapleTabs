@@ -18,6 +18,7 @@ function createTabNode(tab){
 	return node;
 }
 
+//node is where the search will begin from
 function findTabNode(node, goalTabId){
 	var stack = new Array();
 	stack.push(node);
@@ -34,6 +35,17 @@ function findTabNode(node, goalTabId){
 	}
 
 	return null;
+}
+
+
+function isSibling(tabid1, tabid2){
+	var tabNode1 = findTabNode(tabTree, tabid1);		
+	var tabNode2 = findTabNode(tabTree, tabid2);
+
+	if(tabNode1.parent == tabNode2.parent)
+		return true;
+	else
+		return false;	
 }
 
 //Move up/down levels
@@ -63,6 +75,16 @@ function treeShiftDown(){
 
 function treeShiftLevel(tabId){
 	chrome.tabs.query({currentWindow: true}, function(tabs){
+		console.log(tabs);
+		//find current active tab
+		var currentNode;
+		for(var i = 0; i < tabs.length; i++){
+			if(tabs[i].active){
+				currentNode = findTabNode(tabTree, tabs[i].id);	
+				console.log(currentNode);
+			}
+		}
+
 		//find targetNode
 		var targetNode = findTabNode(tabTree, tabId);
 
@@ -70,6 +92,10 @@ function treeShiftLevel(tabId){
 			//check if user is trying to shift further up than root
 			//print some kind of error message***
 			return;
+		}else if(isSibling(currentNode.tab.id, targetNode.tab.id)){
+			//swap active tab
+			chrome.tabs.update(currentNode.tab.id, {active: false});
+			chrome.tabs.update(targetNode.tab.id, {active: true});
 		}else{
 			//find tabs to switch in (siblings on tabNode)
 			//find targetNode's parent
