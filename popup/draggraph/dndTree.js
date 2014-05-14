@@ -379,16 +379,17 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
             .attr("class", "node")
             .attr("transform", function(d) {
                 return "translate(" + source.y0 + "," + source.x0 + ")";
-            })
-            .on('click', click);
+            });
 
         nodeEnter.append("circle")
             .attr('class', 'nodeCircle')
             .attr("r", 0)
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
-            });
+            })
+            .on('click', click);
 
+/*
         nodeEnter.append("text")
             .attr("x", function(d) {
                 return d.children || d._children ? -10 : 10;
@@ -402,7 +403,7 @@ treeJSON = d3.json("manyNodes.json", function(error, treeData) {
                 return d.name;
             })
             .style("fill-opacity", 0);
-
+*/
         // phantom node to give us mouseover in a radius around it
         nodeEnter.append("circle")
             .attr('class', 'ghostCircle')
